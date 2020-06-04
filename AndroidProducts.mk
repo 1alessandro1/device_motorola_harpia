@@ -14,7 +14,8 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_harpia.mk
+    $(LOCAL_DIR)/havoc_harpia.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_harpia-userdebug
+    havoc_harpia-userdebug \
+    havoc_harpia-eng
