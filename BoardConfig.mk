@@ -46,3 +46,5 @@ TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | 0x2002000
 TARGET_LD_SHIM_LIBS += \
     /vendor/lib/libmot_sensorlistener.so|libshims_sensorlistener.so
 
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
