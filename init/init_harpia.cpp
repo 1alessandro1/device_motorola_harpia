@@ -31,13 +31,11 @@
 #include <stdlib.h>
 #include <android-base/properties.h>
 #include "vendor_init.h"
-#include "property_service.h"
 #include <sys/sysinfo.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
 using android::base::GetProperty;
-using android::init::property_set;
 
 void property_override(char const prop[], char const value[])
 {
@@ -76,35 +74,35 @@ void vendor_load_properties()
 
     dualsim = GetProperty("ro.boot.dualsim","");
     if (dualsim == "true") {
-        property_set("persist.radio.force_get_pref", "1");
-        property_set("persist.radio.multisim.config", "dsds");
-        property_set("ro.hw.dualsim", "true");
+        property_override("persist.radio.force_get_pref", "1");
+        property_override("persist.radio.multisim.config", "dsds");
+        property_override("ro.hw.dualsim", "true");
         msim = true;
     }
 
     bootdevice = GetProperty("ro.boot.device","");
-    property_set("ro.hw.device", bootdevice.c_str());
+    property_override("ro.hw.device", bootdevice.c_str());
 
     radio = GetProperty("ro.boot.radio","");
-    property_set("ro.hw.radio", radio.c_str());
+    property_override("ro.hw.radio", radio.c_str());
 
     if (is2GB()) {
-        property_set("dalvik.vm.heapstartsize", "8m");
-        property_set("dalvik.vm.heapgrowthlimit", "192m");
-        property_set("dalvik.vm.heapsize", "512m");
-        property_set("dalvik.vm.heaptargetutilization", "0.75");
-        property_set("dalvik.vm.heapminfree", "512k");
-        property_set("dalvik.vm.heapmaxfree", "8m");
+        property_override("dalvik.vm.heapstartsize", "8m");
+        property_override("dalvik.vm.heapgrowthlimit", "192m");
+        property_override("dalvik.vm.heapsize", "512m");
+        property_override("dalvik.vm.heaptargetutilization", "0.75");
+        property_override("dalvik.vm.heapminfree", "512k");
+        property_override("dalvik.vm.heapmaxfree", "8m");
     } else {
-        property_set("dalvik.vm.heapstartsize", "8m");
-        property_set("dalvik.vm.heapgrowthlimit", "96m");
-        property_set("dalvik.vm.heapsize", "256m");
-        property_set("dalvik.vm.heaptargetutilization", "0.75");
-        property_set("dalvik.vm.heapminfree", "2m");
-        property_set("dalvik.vm.heapmaxfree", "8m");
+        property_override("dalvik.vm.heapstartsize", "8m");
+        property_override("dalvik.vm.heapgrowthlimit", "96m");
+        property_override("dalvik.vm.heapsize", "256m");
+        property_override("dalvik.vm.heaptargetutilization", "0.75");
+        property_override("dalvik.vm.heapminfree", "2m");
+        property_override("dalvik.vm.heapmaxfree", "8m");
     }
 
-    property_set("ro.telephony.default_network", "10");
+    property_override("ro.telephony.default_network", "10");
 
     sku = GetProperty("ro.boot.hardware.sku","");
     if (sku == "XT1600") {
@@ -113,18 +111,18 @@ void vendor_load_properties()
     } else if (sku == "XT1601") {
         /* XT1601 */
         customerid = "retail";
-        property_set("persist.radio.process_sups_ind", "1");
+        property_override("persist.radio.process_sups_ind", "1");
         if (msim) {
-            property_set("persist.radio.pb.max.match", "8");
-            property_set("persist.radio.pb.min.match", "8");
+            property_override("persist.radio.pb.max.match", "8");
+            property_override("persist.radio.pb.min.match", "8");
         }
     } else if (sku == "XT1602") {
         /* XT1602 */
     } else if (sku == "XT1603") {
         /* XT1603 */
         customerid = "retail";
-        property_set("persist.radio.pb.max.match", "10");
-        property_set("persist.radio.pb.min.match", "7");
+        property_override("persist.radio.pb.max.match", "10");
+        property_override("persist.radio.pb.min.match", "7");
     } else if (sku == "XT1604") {
         /* XT1604 - HAS NFC! */
     } else if (sku == "XT1607") {
@@ -134,6 +132,6 @@ void vendor_load_properties()
     }
 
     if (customerid) {
-        property_set("ro.mot.build.customerid", customerid);
+        property_override("ro.mot.build.customerid", customerid);
     }
 }
