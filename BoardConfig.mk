@@ -28,6 +28,10 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/bin/mediaserver=25 \
     /vendor/bin/mm-qcamera-daemon=25
 
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_harpia
+TARGET_RECOVERY_DEVICE_MODULES := libinit_harpia
+
 # Kernel
 TARGET_KERNEL_CONFIG := harpia_defconfig
 
