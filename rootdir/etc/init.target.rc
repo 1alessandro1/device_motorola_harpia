@@ -78,9 +78,6 @@ service harpia-config-sh /vendor/bin/init.device.config.sh
     oneshot
     disabled
 
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 49152
-
 on property:ro.device.dualsim=true
     setprop persist.radio.force_get_pref 1
     setprop persist.radio.multisim.config dsds
