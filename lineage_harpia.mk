@@ -22,7 +22,7 @@ TARGET_BOOTANIMATION_HALF_RES := true
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := harpia
-PRODUCT_NAME := aicp_harpia
+PRODUCT_NAME := lineage_harpia
 PRODUCT_MODEL := Moto G Play
 PRODUCT_BRAND := Motorola
 PRODUCT_MANUFACTURER := Motorola
@@ -36,11 +36,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 BUILD_FINGERPRINT := "motorola/harpia/harpia:6.0.1/MPI24.241-15.3/3:user/release-keys"
-
-PRODUCT_OVERRIDE_INFO := true
-PRODUCT_OVERRIDE_FINGERPRINT := motorola/harpia/harpia:6.0.1/MPI24.241-15.3/3:user/release-keys
-
-# AICP Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    DEVICE_MAINTAINERS="Jeferson Oliveira (jro1979oliver)"
 
